@@ -13,7 +13,7 @@ export default function Signup() {
   const handleSubmit = (e) =>{
     e.preventDefault();
     localStorage.setItem("user", JSON.stringify(input))
-    navigate("/")
+    navigate("/login")
   }
   return (
     <>
@@ -37,7 +37,7 @@ export default function Signup() {
 
             <button type="submit" className="button-class">Continue</button>
 
-            <Link to="/" className="toggle-link" >
+            <Link to="/login" className="toggle-link" >
               Already have an account? Click to Login
             </Link>
 

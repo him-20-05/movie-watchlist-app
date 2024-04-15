@@ -1,33 +1,31 @@
-import React, { useState } from "react";
+import React from "react";
 import './App.css';
 import Loginpage from './components/Loginpage';
 import Signup from './components/Signup';
-import Navbar from "./components/Navbar";
+//import Navbar from "./components/Navbar";
 import { Routes, Route } from "react-router-dom";
 import Home from "./components/Home";
+import Watchlist from "./components/Watchlist";
 
 
 
 
 function App() {
-  const [showLoginPage, setShowLoginPage] = useState(false);
-
-  const toggleLoginPage = () => {
-    setShowLoginPage(!showLoginPage);
-  };
+  
 
   return (
     <>
-      <div className="App">
-          <div className="login-page-overlay">
+      <div>
+          
             <Routes>
-              <Route path="login" element={<Loginpage />} />
-              <Route path="signup" element={<Signup />} />
+              <Route path="/login" element={<Loginpage />} />
+              <Route path="/login/signup" element={<Signup />} />
               <Route path="/" element={<Home/>}/>
+              <Route path="/watchlist" element={<Watchlist/>} />
             </Routes>
           </div>
         
-      </div>
+      
       
     </>
   );

@@ -9,17 +9,20 @@ export default function Loginpage() {
  
   const navigate = useNavigate();
 
-  const handleLogin =(e) =>{
+  const handleLogin = (e) => {
     e.preventDefault();
     const loggedUser = JSON.parse(localStorage.getItem("user"));
-    if(input.email === loggedUser.email){
-      localStorage.setItem('loggedIn', true)
-      navigate("home")
-    }else{
-      alert("wrong email id");
+    
+    // Check if loggedUser is not null
+    if (loggedUser && input.email === loggedUser.email) {
+      localStorage.setItem('loggedIn', true);
+      navigate("/");
+    } else {
+      alert("Wrong email id");
       setinput({ email: "" });
     }
   }
+  
   return (
     <>
       <div className="app flex">
@@ -36,7 +39,7 @@ export default function Loginpage() {
             <button type="submit" className="button-class" >
               Login
             </button>
-            <Link to="signup" className="toggle-link">
+            <Link to="/login/signup" className="toggle-link">
               Don't have an account? Click to Sign-up
             </Link>
           </form>

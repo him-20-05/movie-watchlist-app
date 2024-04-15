@@ -1,7 +1,15 @@
 import React from 'react'
 import Navbar from './Navbar'
+import "./Home.css"
+import Search from './Search'
+import Movies from './Movies'
+import Header from './Header'
+
+
 
 export default function Home() {
+  
+
   return (
     <>
     <div className='homepage'>
@@ -12,11 +20,13 @@ export default function Home() {
            </Navbar>
          </div>
        </div>
-       <div  className='watchlistSceen'>
-        {/* create watch list component  */}
-          <div> Watch list header </div>
-          <div> Watch list seatch</div>
-          <div> Watch list scrollable list</div>
+       <div  className='watchlistScreen'>
+          <div className='header'> <Header/> </div>
+          <div className='search-bar'> <Search></Search> </div>
+          <div className='movies'>
+            <Movies></Movies>
+          </div>
+          
        </div>
       </div>
     </>
