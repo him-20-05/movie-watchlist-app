@@ -1,8 +1,6 @@
 import React from "react";
-import './App.css';
-import Loginpage from './components/Loginpage';
-import Signup from './components/Signup';
-//import Navbar from "./components/Navbar";
+import Loginpage from './pages/Loginpage';
+import Signup from './pages/Signup';
 import { Routes, Route } from "react-router-dom";
 import Home from "./components/Home";
 import Watchlist from "./components/Watchlist";

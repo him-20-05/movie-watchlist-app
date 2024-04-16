@@ -1,42 +1,69 @@
-.homepage{
-    display: flex;
+
+
+.homepage {
+  display: flex;
 }
-.sidebar{
-    height: max-content;
+
+.sidebar {
+  height: max-content;
 }
+
 .watchlistScreen {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center; 
-    height: 100%; 
-    width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%
 }
-.search-bar{
-    width:80%;
+
+.search-bar {
+  width: 80%;
 }
-/* Style for the movie cards */
+
 .card {
-    margin-top: 20px; 
+  margin-top: 20px;
+}
+
+.icon-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 10px;
+}
+
+.bookmark-icon {
+  font-size: 30px;
+}
+
+.header {
+  border: 1px solid red;
+  padding: 10px;
+  width: 80%;
+  margin: 10px;
+  border-radius: 5px;
+}
+
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+  .homepage {
+    flex-direction: column;
   }
-  .icon-container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    padding: 10px;
+
+  .sidebar {
+    width: 100%; 
+    height: auto; 
   }
-  
-  .bookmark-icon {
-    font-size: 30px; 
+
+  .watchlistScreen {
+    width: 100%;
   }
-  .header{
-    border: 1px solid red;
-    padding: 10px;
-    width: 80%;
-    margin: 10px;
-    border-radius: 5px;
+
+  .search-bar {
+    width: 100%;
   }
-  
-  
-  
-  
+
+  .header {
+    width: 100%;
+  }
+}

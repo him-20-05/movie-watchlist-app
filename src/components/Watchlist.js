@@ -32,8 +32,12 @@ export default function Watchlist() {
   }, [redirectToHome, navigate]);
 
   return (
+    <>
+    <Navbar>
+
+</Navbar>
     <div className="d-flex">
-      <Navbar />
+      
       <div className="container mt-4 ">
         <h1 className='text-center text-danger'>Personal Watchlist</h1>
         <div className="row row-cols-1 row-cols-md-2 g-4">
@@ -57,5 +61,6 @@ export default function Watchlist() {
         </div>
       </div>
     </div>
+    </>
   );
 }

@@ -12,12 +12,13 @@ export default function Home() {
 
   return (
     <>
+    <Navbar>
+
+</Navbar>
     <div className='homepage'>
        <div className='sidebar'>
          <div>
-           <Navbar>
-
-           </Navbar>
+           
          </div>
        </div>
        <div  className='watchlistScreen'>
