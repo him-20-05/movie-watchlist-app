@@ -12,14 +12,19 @@ export default function Movies() {
   const isLoggedIn = localStorage.getItem("loggedIn");
 
   const handleAddToWatchlist = (currMovie) => {
+    const existingWatchlist =
+      JSON.parse(localStorage.getItem("watchlist")) || [];
+
     if (isLoggedIn) {
-      
-      const watchlist = JSON.parse(localStorage.getItem("watchlist")) || [];
-     
-      watchlist.push(currMovie);
-    
-      localStorage.setItem("watchlist", JSON.stringify(watchlist));
-      
+      let updatedWatchlist;
+      if (existingWatchlist.length === 0) {
+        updatedWatchlist = [];
+      } else {
+        updatedWatchlist = [...existingWatchlist];
+      }
+
+      updatedWatchlist.push(currMovie);
+      localStorage.setItem("watchlist", JSON.stringify(updatedWatchlist));
       navigate("/watchlist");
     } else {
       navigate("/login");
@@ -61,3 +66,4 @@ export default function Movies() {
     </div>
   );
 }
+
