@@ -1,17 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useGlobalContext } from './context';
 
 export default function Search() {
-  const { query, setQuery, error, setError } = useGlobalContext();
-  const [searchInput, setSearchInput] = useState(''); // Initialize with an empty string
+  const {  setQuery, error, setError } = useGlobalContext();
+  const [searchInput, setSearchInput] = useState('');
 
-  useEffect(() => {
-    setSearchInput(''); // Reset searchInput when query changes
-  }, [query]);
+ 
 
   const handleSearch = () => {
     if (searchInput.trim() === '') {
-      // If search input is empty, show an error message
       setError({ show: true, msg: 'Please enter a movie title' });
       return;
     }
@@ -33,7 +30,7 @@ export default function Search() {
             />
             <button
               type="button"
-              className="btn btn-danger"
+              className="btn btn-outline-danger"
               onClick={handleSearch}
             >
               Search
