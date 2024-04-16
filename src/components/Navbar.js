@@ -1,18 +1,46 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { IoHomeOutline } from "react-icons/io5";
 import { FaRegCircleUser } from "react-icons/fa6";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 export default function Navbar() {
+  const [userName, setUserName] = useState(null);
   const isLoggedIn = localStorage.getItem("loggedIn");
-  const userNameData = localStorage.getItem("user");
-  const userName = userNameData ? JSON.parse(userNameData).name : null;
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (isLoggedIn) {
+      fetchUserData();
+    }
+  }, [isLoggedIn]);
+
+  const fetchUserData = () => {
+    const userId = localStorage.getItem("userId");
+    console.log("userId", userId)
+    if (!userId) {
+      toast.error("User ID not found in localStorage");
+      return;
+    }
   
-
-
+    
+    fetch(`http://localhost:8000/user/${userId}`)
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Failed to fetch user data");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        setUserName(data.name);
+      })
+      .catch((error) => {
+        console.error("Error fetching user data:", error);
+      });
+  };
+  
   const handleLogout = () => {
-    localStorage.removeItem("loggedIn");
+    localStorage.removeItem("loggedIn"); 
     navigate("/");
   };
 
@@ -62,7 +90,7 @@ export default function Navbar() {
                     <>
                       <span className="user-name m-2 border border-light border-2 p-2 rounded">
                         <FaRegCircleUser style={{ fontSize: "20px" }} />
-                        {userName}
+                        {userName ? userName : "Loading..."}
                       </span>
                       <button
                         type="button"
@@ -109,3 +137,4 @@ export default function Navbar() {
     </nav>
   );
 }
+
