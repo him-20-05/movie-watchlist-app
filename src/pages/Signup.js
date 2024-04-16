@@ -1,19 +1,30 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from "react-router-dom";
+import { toast } from 'react-toastify';
 
 export default function Signup() {
-  const[input, setinput] = useState({
-    name: "",
-    email:""
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
 
-  })
 
-  const navigate = useNavigate(); // to navigate the value to login
+  const navigate = useNavigate(); 
 
   const handleSubmit = (e) =>{
     e.preventDefault();
-    localStorage.setItem("user", JSON.stringify(input))
-    navigate("/login")
+    let signupObj = {name, email}
+    console.log('res:',signupObj)
+   
+     navigate("/login")
+
+    fetch("http://localhost:8000/user",{
+      method:"POST",
+      headers:{'content-type': 'application/json'},
+      body:JSON.stringify(signupObj)
+    }).then((res)=>{
+      toast.success('Registered Successfully')
+    }).catch((err)=>{
+      toast.error('Failed :'+err.message)
+    })
   }
   return (
     <>
@@ -22,17 +33,17 @@ export default function Signup() {
           <h1 className="flex">Create Account</h1>
           <form className="form-class" onSubmit={handleSubmit}>
             <label>Your name</label>
-            <input name="name" value={input.name} 
+            <input name="name" value={name} 
             onChange={(e) => 
-              setinput({...input, [e.target.name]: e.target.value})} 
+              setName(e.target.value)} 
             type="text" placeholder="First and Last Name" className="input-class" required />
 
            
 
             <label>Email</label>
-            <input type="email" placeholder="Enter User Email" className="input-class"  name="email" value={input.email} 
+            <input type="email" placeholder="Enter User Email" className="input-class"  name="email" value={email} 
             onChange={(e) => 
-              setinput({...input, [e.target.name]: e.target.value})}
+              setEmail(e.target.value)}
             required />
 
             <button type="submit" className="button-class">Continue</button>
