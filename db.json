@@ -1,0 +1,19 @@
+{
+  "user": [
+    {
+      "name": "Amazon",
+      "email": "04amazonprime@gmail.com",
+      "id": 1
+    },
+    {
+      "name": "Himanshu Tiwari",
+      "email": "himanshutiwari2005199@gmail.com",
+      "id": 2
+    },
+    {
+      "name": "animesh",
+      "email": "ani@gmail.com",
+      "id": 3
+    }
+  ]
+}
